@@ -43,16 +43,19 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center text-center md:text-left"
             >
-              <img
+              <motion.img
                 src={testimonials[index].avatar}
                 alt={testimonials[index].name}
                 className="w-20 h-20 rounded-full border-4 border-orange-500 mb-4"
+                initial={{ scale: 0.8 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.4 }}
               />
               <h3 className="font-semibold text-lg">{testimonials[index].name}</h3>
               <span className="text-gray-500">{testimonials[index].title}</span>
@@ -65,12 +68,21 @@ export default function Testimonials() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Second testimonial shown at same time */}
-          <div className="hidden md:flex flex-col items-center text-center md:text-left">
-            <img
+          {/* Second testimonial static */}
+          <motion.div
+            key={(index + 1) % testimonials.length}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden md:flex flex-col items-center text-center md:text-left"
+          >
+            <motion.img
               src={testimonials[(index + 1) % testimonials.length].avatar}
               alt={testimonials[(index + 1) % testimonials.length].name}
               className="w-20 h-20 rounded-full border-4 border-orange-500 mb-4"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.4 }}
             />
             <h3 className="font-semibold text-lg">
               {testimonials[(index + 1) % testimonials.length].name}
@@ -86,28 +98,52 @@ export default function Testimonials() {
                 <span key={i}>★</span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Pagination Dots */}
         <div className="flex justify-center space-x-2 mb-12">
           {testimonials.map((_, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full ${
-                i === index ? "bg-orange-500" : "bg-gray-400"
+              className={`w-3 h-3 rounded-full transition-all ${
+                i === index ? "bg-orange-500 scale-110" : "bg-gray-400 scale-100"
               }`}
+              whileTap={{ scale: 1.3 }}
+              whileHover={{ scale: 1.2 }}
             />
           ))}
         </div>
 
         {/* Clients Logo */}
-        <div className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-80">
+        <motion.div
+          className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-80"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+        >
           {clients.map((logo, i) => (
-            <img key={i} src={logo} alt="client" className="h-10 md:h-12" />
+            <motion.img
+              key={i}
+              src={logo}
+              alt="client"
+              className="h-10 md:h-12"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.4 }}
+            />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
