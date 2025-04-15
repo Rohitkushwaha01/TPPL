@@ -7,7 +7,7 @@ export default function Contact() {
     <>
     <section className="bg-white text-gray-800 my-20">
       <div className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-blue-900 mb-20 text-center">Reach Us</h2>
+        <h2 className="text-3xl font-bold text-orange-500 mb-20 text-center">Reach Us</h2>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}

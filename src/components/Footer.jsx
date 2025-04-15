@@ -24,13 +24,13 @@ export default function Footer() {
           <h3 className="font-bold text-xl text-orange-500 mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
-              <Link to="#about" className="hover:text-orange-500 transition">About Us</Link>
+              <Link to="/about" className="hover:text-orange-500 transition">About Us</Link>
             </li>
             <li>
-              <Link to="#contact" className="hover:text-orange-500 transition">Contact Us</Link>
+              <Link to="/contact" className="hover:text-orange-500 transition">Contact Us</Link>
             </li>
             <li>
-              <Link to="#services" className="hover:text-orange-500 transition">Our Services</Link>
+              <Link to="/services" className="hover:text-orange-500 transition">Our Services</Link>
             </li>
           </ul>
         </div>

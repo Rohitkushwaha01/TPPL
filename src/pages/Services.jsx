@@ -74,12 +74,12 @@ export default function Services() {
     return (
         <>
         <div className=" bg-white text-gray-800 px-6 md:px-20 py-16">
-            <h2 className="text-4xl font-bold text-center text-blue-800 drop-shadow-sm my-20">Our Services</h2>
+            <h2 className="text-4xl font-bold text-center text-orange-500 drop-shadow-sm my-20">Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
-                        className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-blue-100 border border-blue-200"
+                        className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer bg-amber-100 border border-amber-400"
                         onClick={() => handleServiceClick(service)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
