@@ -3,6 +3,8 @@ import bg1 from "../assets/bg1.jpg";
 import bg2 from "../assets/bg2.jpg";
 import bg3 from "../assets/bg3.jpg";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -39,9 +41,9 @@ export default function Hero() {
   const { image, heading, subheading } = slides[index];
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-12 xl:px-24 py-10">
+    <section className=" relative w-full min-h-screen overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-12 xl:px-24 py-10">
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 opacity-90">
         <AnimatePresence>
           <motion.div
             key={image}
@@ -60,13 +62,14 @@ export default function Hero() {
         onClick={prev}
         className="absolute top-1/2 left-3 sm:left-6 transform -translate-y-1/2 text-white text-3xl z-20"
       >
-        ‹
+        <ChevronLeft size={32} />
       </button>
+
       <button
         onClick={next}
         className="absolute top-1/2 right-3 sm:right-6 transform -translate-y-1/2 text-white text-3xl z-20"
       >
-        ›
+        <ChevronRight size={32} />
       </button>
 
       {/* Content */}
@@ -77,23 +80,35 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 1 }}
-            className="w-full lg:w-2/3 text-center lg:text-left text-white mt-15 lg:mt-0 z-10"
+            transition={{ duration: 1, staggerChildren: 0.3 }}
+            className="w-full lg:w-2/3 text-center lg:text-left text-amber-500 mt-15 lg:mt-0 z-10"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <motion.h1
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+            >
               {heading}
-            </h1>
-            <p className="mt-4 text-base sm:text-lg md:text-xl">{subheading}</p>
-
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="mt-4 text-base sm:text-lg md:text-xl"
+            >
+              {subheading}
+            </motion.p>
             <div className="mt-6 flex flex-col sm:flex-row sm:justify-center lg:justify-start items-center gap-4">
-              <button className="bg-white text-black font-semibold px-6 py-3 rounded w-full sm:w-auto">
-                Our Services
+              <button className="bg-white text-black font-semibold px-6 py-3 rounded w-full sm:w-auto transition transform hover:scale-105">
+               <Link to="/services">Our Services</Link> 
               </button>
-              <button className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded text-white w-full sm:w-auto">
+              <button className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded text-white w-full sm:w-auto transition transform hover:scale-105">
                 ▶️ Our Video!
               </button>
             </div>
           </motion.div>
+
         </AnimatePresence>
 
         {/* Mission Box */}

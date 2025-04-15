@@ -28,13 +28,13 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex-1 text-center lg:text-left text-lg"
+          className="flex-1 text-left text-lg"
         >
-          <p className="font-medium text-left md:text-center">
+          <p className="font-medium text-left">
             We as a group are leading and fast growing in steel fabrication, manufacturing,
             providing engineering solutions to a host of competent players across India
           </p>
-          <p className="mt-4 text-gray-600 text-lg text-left md:text-center">
+          <p className="mt-4 text-gray-600 text-lg text-left">
             It gives us great pleasure to welcome you to Talegaonkar Profiles Private
             Limited’s official website. Incorporated in June 2007 and headquartered in
             Pune, India, we are a fast-growing manufacturing organization specializing in

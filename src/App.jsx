@@ -1,22 +1,29 @@
-import Slider from "./components/Slider";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import AboutSection from "./components/AboutSection";
-import QuoteSection from "./components/QuoteSection";
-import Footer from "./components/Footer";
-import Testimonials from "./components/Testimonials";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Services from './pages/Services';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Testimonials from './pages/Testimonials';
+import Quote from './pages/Quote';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-export default function App() {
+
+function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      {/* <Slider> */}
-        <Hero />
-        <AboutSection/>
-        <QuoteSection/>
-        <Testimonials/>
-        <Footer/>
-      {/* </Slider> */}
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/quote" element={<Quote />} />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;

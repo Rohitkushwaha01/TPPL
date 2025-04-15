@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Client from "./Client";
 
 const testimonials = [
   {
@@ -16,15 +17,6 @@ const testimonials = [
     review:
       "Expertly trained team members who take the extra step and go the extra mile, all to fulfill our promise, deliver innovative and dynamic solutions to our customers!",
   },
-];
-
-const clients = [
-  "https://i.ibb.co/wsp7DWG/logo1.png",
-  "https://i.ibb.co/vPmfJKj/logo2.png",
-  "https://i.ibb.co/D1J0Lqj/logo3.png",
-  "https://i.ibb.co/N1fwBBS/logo4.png",
-  "https://i.ibb.co/MRyyLkD/logo5.png",
-  "https://i.ibb.co/xjfsMjg/logo6.png",
 ];
 
 export default function Testimonials() {
@@ -107,43 +99,15 @@ export default function Testimonials() {
             <motion.button
               key={i}
               onClick={() => setIndex(i)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                i === index ? "bg-orange-500 scale-110" : "bg-gray-400 scale-100"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${i === index ? "bg-orange-500 scale-110" : "bg-gray-400 scale-100"
+                }`}
               whileTap={{ scale: 1.3 }}
               whileHover={{ scale: 1.2 }}
             />
           ))}
         </div>
 
-        {/* Clients Logo */}
-        <motion.div
-          className="flex flex-wrap justify-center items-center gap-6 grayscale opacity-80"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.1,
-              },
-            },
-          }}
-        >
-          {clients.map((logo, i) => (
-            <motion.img
-              key={i}
-              src={logo}
-              alt="client"
-              className="h-10 md:h-12"
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.4 }}
-            />
-          ))}
-        </motion.div>
+        <Client/>
       </div>
     </section>
   );
